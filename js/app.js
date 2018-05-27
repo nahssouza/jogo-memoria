@@ -5,6 +5,7 @@ const cards = ["fa-diamond", "fa-paper-plane-o", "fa-anchor", "fa-bolt", "fa-cub
 let abertos = [];
 let matchs = 0;
 let movimentos = 0;
+let estrelas = 3;
 
 // Função que insere os cards já embaralhados pela função shuffle no DOM
 function inserirCards(){
@@ -64,10 +65,12 @@ function clickCard(){
 // Função que checa se os movimentos antigiram os intervalos para remover estrela
 function checarMovimentos(){
 	$(".moves").text(movimentos);
-	if(movimentos === 15){
-		console.log("remover estrela");
+	if(movimentos === 5){
+		$("#terceira").css("display","none");
+		estrelas--;
 	} else if (movimentos === 25) {
-		console.log("remover mais uma estrela");
+		$("#segunda").css("display","none");
+		estrelas--;
 	}
 }
 
