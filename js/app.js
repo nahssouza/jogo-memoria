@@ -4,6 +4,7 @@
 const cards = ["fa-diamond", "fa-paper-plane-o", "fa-anchor", "fa-bolt", "fa-cube", "fa-leaf", "fa-bicycle", "fa-bomb"];
 let abertos = [];
 let matchs = 0;
+let movimentos = 0;
 
 // Função que insere os cards já embaralhados pela função shuffle no DOM
 function inserirCards(){
@@ -15,7 +16,7 @@ function inserirCards(){
 
 // Função que cria o HTML dos cards
 function criarCard(classeCard){
-	$("ul.deck").prepend(`<li class="card"><i class="fa ${classeCard}"></i></li>`);
+	$("ul.deck").append(`<li class="card"><i class="fa ${classeCard}"></i></li>`);
 }
 
 // Shuffle function from http://stackoverflow.com/a/2450976
@@ -53,9 +54,21 @@ function clickCard(){
 	        clicado.addClass("open");
         	clicado.addClass("show");
         	abertos.push(clicado);
+        	movimentos++;
+        	checarMovimentos();
         	checarMatch();
 	    }
     }
+}
+
+// Função que checa se os movimentos antigiram os intervalos para remover estrela
+function checarMovimentos(){
+	$(".moves").text(movimentos);
+	if(movimentos === 15){
+		console.log("remover estrela");
+	} else if (movimentos === 25) {
+		console.log("remover mais uma estrela");
+	}
 }
 
 // Função que checa se os cards são iguais para fazer o match
@@ -75,7 +88,7 @@ var match = function(){
 		card.toggleClass("match");
 	});
 	abertos = [];
-	matchs = matchs + 1;
+	matchs++;
 
 	if (matchs === 8){
 		console.log("Venceu!");
