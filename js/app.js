@@ -77,10 +77,8 @@ function checarMovimentos(){
 // Função que checa se os cards são iguais para fazer o match
 function checarMatch(){
 	if (abertos[0].children().attr("class")===abertos[1].children().attr("class")){
-	    console.log("deu match");
 	    setTimeout(match, 500)
 	} else {
-	    console.log("não deu match");
 	    setTimeout(resetAbertos, 500);
 	}
 }
@@ -94,7 +92,8 @@ var match = function(){
 	matchs++;
 
 	if (matchs === 8){
-		console.log("Venceu!");
+		$(".estrelas").text(estrelas);
+		$("#popup").css("display","block");
 	}
 }
 
@@ -113,6 +112,7 @@ function restaurarEstrelas(){
 	$("#segunda").css("display","block");	
 }
 
+// Função que reinicia o jogo
 function reiniciarJogo(){
 	movimentos = 0;
 	$(".moves").text(movimentos);
@@ -123,8 +123,21 @@ function reiniciarJogo(){
 	iniciarJogo();
 }
 
+// Função ativada ao clicar no botão Sim
+function jogarNovamente(){
+	$("#popup").css("display","none");
+	reiniciarJogo();
+}
+
+// Função que fecha o popup
+function naoJogar(){
+	$("#popup").css("display","none");
+}
+
 // Executa ao carregar a página
 $(document).ready(function(){
     iniciarJogo();
     $(".restart").click(reiniciarJogo);
+    $(".jogar_novamente").click(jogarNovamente);
+    $(".nao_jogar").click(naoJogar);
 });
