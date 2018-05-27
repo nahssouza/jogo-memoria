@@ -1,20 +1,11 @@
-# Memory Game Project
+# Projeto Jogo da Memória
 
-## Table of Contents
+Jogo da Memória com o tema HP criado com o objetivo de avaliar conhecimentos em Javascript para o nanodegree de Fundamentos Web Front-End da Udacity.
 
-* [Instructions](#instructions)
-* [Contributing](#contributing)
+## Como jogar
 
-## Instructions
+Clique sobre o cartão para virá-lo, caso os dois cartões abertos sejam iguais criará um "match".
 
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+O objetivo do jogo é fazer "matchs" para todos os cartões com o menor número possível de movimentos e com o menor tempo possível.
 
-To get started, open `js/app.js` and start building out the app's functionality
-
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
-
-## Contributing
-
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
-
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+No final do jogo, você receberá sua pontuação.
