@@ -1,7 +1,7 @@
 /*
  * Create a list that holds all of your cards
  */
-
+const cards = ["fa-diamond", "fa-paper-plane-o", "fa-anchor", "fa-bolt", "fa-cube", "fa-leaf", "fa-bicycle", "fa-bomb"];
 
 /*
  * Display the cards on the page
@@ -9,6 +9,19 @@
  *   - loop through each card and create its HTML
  *   - add each card's HTML to the page
  */
+
+// Função que insere os cards já embaralhados pela função shuffle no DOM
+function inserirCards(){
+	cardsEmbaralhados = shuffle(cards.concat(cards));
+	for (const card of cardsEmbaralhados){
+		criarCard(card);
+	}
+}
+
+// Função que cria o HTML dos cards
+function criarCard(classeCard){
+	$("ul.deck").append(`<li class="card"><i class="fa ${classeCard}"></i></li>`);
+}
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -25,6 +38,10 @@ function shuffle(array) {
     return array;
 }
 
+// Executa ao carregar a página
+$(document).ready(function(){
+    inserirCards();
+});
 
 /*
  * set up the event listener for a card. If a card is clicked:
