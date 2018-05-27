@@ -5,7 +5,9 @@ const cards = ["fa-diamond", "fa-paper-plane-o", "fa-anchor", "fa-bolt", "fa-cub
 let abertos = [];
 let matchs = 0;
 let movimentos = 0;
-let estrelas = 3;
+let numestrelas = 3;
+let segundos = 0;
+let timer;
 
 // Função que insere os cards já embaralhados pela função shuffle no DOM
 function inserirCards(){
@@ -39,6 +41,7 @@ function shuffle(array) {
 function iniciarJogo(){
 	inserirCards();
 	$(".card").click(clickCard);
+	iniciarTimer();
 }
 
 // Função que verifica se o card clicado já está aberto ou possui match
@@ -67,10 +70,12 @@ function checarMovimentos(){
 	$(".moves").text(movimentos);
 	if(movimentos === 15){
 		$("#terceira").css("display","none");
-		estrelas--;
+		numestrelas--;
+		$("#estrelas").text("estrelas");
 	} else if (movimentos === 25) {
 		$("#segunda").css("display","none");
-		estrelas--;
+		numestrelas--;
+		$("#estrelas").text("estrela");
 	}
 }
 
@@ -92,8 +97,9 @@ var match = function(){
 	matchs++;
 
 	if (matchs === 8){
-		$(".estrelas").text(estrelas);
+		$(".estrelas").text(numestrelas);
 		$("#popup").css("display","block");
+		clearInterval(timer);
 	}
 }
 
@@ -110,10 +116,14 @@ var resetAbertos = function(){
 function restaurarEstrelas(){
 	$("#terceira").css("display","block");
 	$("#segunda").css("display","block");	
+	numestrelas = 3;
 }
 
 // Função que reinicia o jogo
 function reiniciarJogo(){
+	clearInterval(timer);
+	segundos = 0;
+	$(".timer").text(segundos);
 	movimentos = 0;
 	$(".moves").text(movimentos);
 	abertos = [];
@@ -132,6 +142,18 @@ function jogarNovamente(){
 // Função que fecha o popup
 function naoJogar(){
 	$("#popup").css("display","none");
+}
+
+// Função que inicia o timer
+function iniciarTimer(){
+	timer = setInterval(function(){
+		segundos++;
+		$(".timer").text(segundos);
+	}, 1000);
+}
+
+function resetTimer(){
+	segundos = 0;
 }
 
 // Executa ao carregar a página
