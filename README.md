@@ -1,6 +1,6 @@
 # Projeto Jogo da Memória
 
-Jogo da Memória com o tema HP criado com o objetivo de avaliar conhecimentos em Javascript para o nanodegree de Fundamentos Web Front-End da Udacity.
+Jogo da Memória criado com o objetivo de avaliar conhecimentos em Javascript para o nanodegree de Fundamentos Web Front-End da Udacity.
 
 ## Como jogar
 
