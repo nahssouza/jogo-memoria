@@ -65,7 +65,7 @@ function clickCard(){
 // Função que checa se os movimentos antigiram os intervalos para remover estrela
 function checarMovimentos(){
 	$(".moves").text(movimentos);
-	if(movimentos === 5){
+	if(movimentos === 15){
 		$("#terceira").css("display","none");
 		estrelas--;
 	} else if (movimentos === 25) {
@@ -107,7 +107,24 @@ var resetAbertos = function(){
 	abertos = [];
 }
 
+// Função que restaura as estrelas a posição inicial
+function restaurarEstrelas(){
+	$("#terceira").css("display","block");
+	$("#segunda").css("display","block");	
+}
+
+function reiniciarJogo(){
+	movimentos = 0;
+	$(".moves").text(movimentos);
+	abertos = [];
+	matchs = [];	
+	restaurarEstrelas();
+	$(".deck").html(" ");
+	iniciarJogo();
+}
+
 // Executa ao carregar a página
 $(document).ready(function(){
     iniciarJogo();
+    $(".restart").click(reiniciarJogo);
 });
