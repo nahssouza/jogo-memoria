@@ -152,10 +152,6 @@ function iniciarTimer(){
 	}, 1000);
 }
 
-function resetTimer(){
-	segundos = 0;
-}
-
 // Executa ao carregar a página
 $(document).ready(function(){
     iniciarJogo();
