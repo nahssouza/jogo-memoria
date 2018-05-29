@@ -8,6 +8,7 @@ let movimentos = 0;
 let numestrelas = 3;
 let segundos = 0;
 let timer;
+let iniciado = false;
 
 // Função que insere os cards já embaralhados pela função shuffle no DOM
 function inserirCards(){
@@ -41,12 +42,17 @@ function shuffle(array) {
 function iniciarJogo(){
 	inserirCards();
 	$(".card").click(clickCard);
-	iniciarTimer();
 }
 
 // Função que verifica se o card clicado já está aberto ou possui match
 function clickCard(){
 	let clicado = $(this);
+	
+	if (!iniciado) {
+        iniciado = true;
+        iniciarTimer();
+    }
+	
 	if (clicado.hasClass('show') || clicado.hasClass('match')) { 
         return false; 
     } else {
@@ -130,6 +136,7 @@ function reiniciarJogo(){
 	matchs = [];	
 	restaurarEstrelas();
 	$(".deck").html(" ");
+	iniciado = false;
 	iniciarJogo();
 }
 
